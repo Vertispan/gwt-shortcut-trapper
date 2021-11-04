@@ -67,6 +67,10 @@ public final class ShortcutTrapper {
     impl.bind(shortcut, handler, bindType);
   }
 
+  public void unbind(String shortcut) {
+    impl.unbind(shortcut);
+  }
+
   public Map<String, KeyboardShortcutEventHandler> getBindings() {
     return impl.getBindings();
   }

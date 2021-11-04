@@ -25,6 +25,7 @@ import com.vertispan.lib.shortcuttrapper.KeyboardShortcutEventHandler;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -61,6 +62,13 @@ public class ShortcutTrapperImpl {
     Optional<Binding> binding = ComboNormalizer.parse(shortcut, handler,
         bindType == null ? null : bindType.name().toLowerCase());
     binding.ifPresent(bindings::add);
+  }
+
+  public void unbind(String shortcut) {
+    Optional<Binding> newB = ComboNormalizer.parse(shortcut, e -> false, null);
+    newB.ifPresent(
+        b -> bindings.removeIf(binding
+            -> Objects.equals(b.getCombo(), binding.getCombo())));
   }
 
   public Map<String, KeyboardShortcutEventHandler> getBindings() {

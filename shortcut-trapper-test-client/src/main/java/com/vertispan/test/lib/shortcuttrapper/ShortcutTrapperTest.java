@@ -46,6 +46,6 @@ public class ShortcutTrapperTest implements EntryPoint, UncaughtExceptionHandler
 
   private void configureLogging() {
     Logger.getGlobal().setLevel(Level.FINEST);
-    Logger.getLogger(ShortcutTrapperImpl.class.getName()).setLevel(Level.FINE);
+    Logger.getLogger(ShortcutTrapperImpl.class.getName()).setLevel(Level.FINEST);
   }
 }

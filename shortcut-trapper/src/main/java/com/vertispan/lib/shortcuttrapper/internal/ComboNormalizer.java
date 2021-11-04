@@ -70,6 +70,17 @@ public class ComboNormalizer {
       return "shift".equals(key) || "ctrl".equals(key) || "alt".equals(key) || "meta".equals(key);
     }
 
+    private static String getKeyName(String key) {
+      if (isModifier(key)) {
+        if ("ctrl".equals(key)) {
+          return "control";
+        } else {
+          return key;
+        }
+      }
+      return null;
+    }
+
     public boolean any() {
       return shift || ctrl || alt || meta;
     }
@@ -215,6 +226,10 @@ public class ComboNormalizer {
   private static String[] keysFromString(String combination) {
     if ("+".equals(combination)) {
       return new String[]{combination};
+    }
+    // if we're only wanting the modifier by itself, we'll need to double up
+    if (Modifier.isModifier(SPECIAL_ALIASES.getOrDefault(combination, combination))) {
+      return new String[]{combination, Modifier.getKeyName(combination)};
     }
     combination = combination.replaceAll("\\+{2}", "+plus");
     return combination.split("\\+");

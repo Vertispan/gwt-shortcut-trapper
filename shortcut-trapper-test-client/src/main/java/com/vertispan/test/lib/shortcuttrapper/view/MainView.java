@@ -126,6 +126,18 @@ public class MainView {
     }
   }
 
+  private void onRemoveBinding(Event e) {
+    HTMLSelectElement bindingScope = (HTMLSelectElement) document.getElementById("bindingScope");
+    HTMLInputElement combo = (HTMLInputElement) document.getElementById("comboCharacters");
+    if ("Global".equals(bindingScope.value)) {
+      globalTrapper.unbind(combo.value);
+      displayGlobalBindings(e);
+    } else {
+      scopedTrapper.unbind(combo.value);
+      displayScopedBindings(e);
+    }
+  }
+
   private void onClearClick(Event e) {
     clearConsole();
   }
@@ -200,6 +212,7 @@ public class MainView {
                 .add(div()
                     .css(STYLE.form())
                     .add(input(InputType.text)
+                        .style("flex: 1;")
                         .id("comboCharacters"))
                     .add(select()
                         .id("bindingScope")
@@ -210,6 +223,9 @@ public class MainView {
                     .add(button()
                         .on(EventType.click, this::onAddBinding)
                         .textContent("Add Binding"))
+                    .add(button()
+                        .on(EventType.click, this::onRemoveBinding)
+                        .textContent("Remove Binding"))
                 )
             )
             .add(div()
