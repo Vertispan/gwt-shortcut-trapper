@@ -1,4 +1,4 @@
-# Shortcut-Trapper
+# GWT Shortcut-Trapper
 
 Simple GWT library for handling keyboard shortcuts.
 
@@ -9,8 +9,8 @@ Simple GWT library for handling keyboard shortcuts.
 ```xml
 <dependencies>
   <dependency>
-    <groupId>com.vertispan</groupId>
-    <artifactId>shortcut-trapper</artifactId>
+    <groupId>com.vertispan.shortcut</groupId>
+    <artifactId>gwt-shortcut-trapper</artifactId>
     <version>LATEST</version>
     <scope>provided</scope>
   </dependency>
