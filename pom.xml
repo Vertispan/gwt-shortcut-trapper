@@ -6,7 +6,7 @@
 
   <groupId>com.vertispan.shortcut</groupId>
   <artifactId>gwt-shortcut-trapper-parent</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>dev</version>
   <packaging>pom</packaging>
 
   <name>gwt-shortcut-trapper</name>
@@ -35,14 +35,18 @@
     </developer>
   </developers>
 
-  <url>http://www.vertispan.com/</url>
+  <url>https://www.github.com/vertispan/</url>
 
   <properties>
+    <revision>HEAD-SNAPSHOT</revision>
+
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.build.outputEncoding>UTF-8</project.build.outputEncoding>
 
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+
+    <maven.flatten.plugin>1.2.2</maven.flatten.plugin>
 
     <license.orgName>Vertispan LLC</license.orgName>
     <license.year>2021</license.year>
@@ -112,6 +116,30 @@
             <phase>process-sources</phase>
             <goals>
               <goal>format</goal>
+            </goals>
+          </execution>
+        </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.codehaus.mojo</groupId>
+        <artifactId>flatten-maven-plugin</artifactId>
+        <version>${maven.flatten.plugin}</version>
+        <configuration>
+          <flattenMode>oss</flattenMode>
+        </configuration>
+        <executions>
+          <execution>
+            <id>flatten</id>
+            <phase>process-resources</phase>
+            <goals>
+              <goal>flatten</goal>
+            </goals>
+          </execution>
+          <execution>
+            <id>flatten.clean</id>
+            <phase>clean</phase>
+            <goals>
+              <goal>clean</goal>
             </goals>
           </execution>
         </executions>
