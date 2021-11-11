@@ -13,6 +13,7 @@
   <artifactId>gwt-shortcut-trapper</artifactId>
   <version>${revision}</version>
 
+  <name>GWT Shortcut Trapper</name>
   <packaging>jar</packaging>
 
   <dependencies>
