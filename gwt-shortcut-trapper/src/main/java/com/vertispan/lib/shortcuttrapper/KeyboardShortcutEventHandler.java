@@ -23,6 +23,7 @@ public interface KeyboardShortcutEventHandler {
   /**
    * Executes when a ShortcutTrapper traps a configured binding.
    *
+   * @param event the event.
    * @return false to prevent default browser behavior and stop event bubbling.
    */
   boolean onShortcut(KeyboardShortcutEvent event);

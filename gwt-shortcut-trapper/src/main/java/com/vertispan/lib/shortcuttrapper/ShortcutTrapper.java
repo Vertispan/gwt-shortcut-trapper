@@ -34,6 +34,8 @@ public final class ShortcutTrapper {
    * Gets the global shortcutTrapper.
    * <p>
    * This one binds to the document level.
+   *
+   * @return the global ShortcutTrapper instance.
    */
   public static ShortcutTrapper getGlobal() {
     return getInstance(DomGlobal.document);
@@ -41,6 +43,9 @@ public final class ShortcutTrapper {
 
   /**
    * Get a scoped ShortcutTrapper on provided node.
+   *
+   * @param node the node to scope to.
+   * @return the ShortcutTrapper instance scoped to the parameter node.
    */
   public static ShortcutTrapper getInstance(Node node) {
     if (node == null) {
